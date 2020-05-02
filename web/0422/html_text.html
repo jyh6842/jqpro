@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        // jQuery 의 $ 기호를 다른 표현의 $와
+        // 충돌을 방지하기 위해서 다른 기호로 바꾼다.
+        // jq = $.noConflict(); // 앞으로 $ 대신에 jq로 쓰게 쓰겠다.
+
+$(function () {
+    $('#btn1').on('click', function () {
+        // pp = $('p').html();
+        /*
+        pp = $('p').text();
+
+        $('#result1').html(pp); // 1<a>홍길동</a>
+        // $('#result1').text(pp) // 1 홍길동
+        */
+
+        /*
+        code = "";
+        $.each($('p'), function(i){
+            //$('p').html();
+            code += i +" 번째 " +  $(this).html() + "<br>";
+        })
+        $('#result1').html(code);
+        */
+
+
+
+        code =`<ul>`
+        $.each($('p'), function(i, v){ // v : p[0], p[1], p[2] v는 DOM 이다.
+            code += `<li> ${ $(v).html() } </li>`//v.html() 이거 사용 불가능 (DOM) 이라서 // $ 전자는 템블릿(템블릿 리터럴의 표혁식(backtick))이고 후자 $ 은 jquery 이다.
+            //               v.innerHTML라고도 쓸 수 있음
+        })//          제이쿼리  템플릿
+        code +=`<ul>`
+        $('#result1').html(code);
+
+    })
+
+    $('#btn2').on('click', function () {
+        pp = $('p').text(); // 1 홍길동 2 개나리 3 진달래
+        $('#result1').text(pp);
+    })
+
+    $('#btn3').on('click', function(){
+        a = "happy";
+        b = "hello~~";
+
+        //let  res = "Hello~~ " + b + " "+ a;
+        let res = ` hello ${b} ${a}`;
+        $('#result2').text(res);
+    })
+})
+
+    </script>
+</head>
+<body>
+
+<div class = "box">
+    <h2>템플릿 리터럴</h2>
+    문자열과 변수를 한번에 사용
+    grave accent(`), backquote, backtick 을 이용해서 문자열을 표현한 것을 템풀릿 리터럴이라고 한다.
+    <p>1<a>벚꽃</a></p>
+    <p>2<a>개나리</a></p>
+    <p>3<a>진달래</a></p>
+    <button id="btn1">실행 1</button>
+    <button id="btn2">실행 2</button>
+    <div id="result1"></div>
+
+
+    <button id="btn3">실행 3</button>
+
+    <div id="result2"></div>
+</div>
+
+</body>
+</html>

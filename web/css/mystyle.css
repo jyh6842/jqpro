@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* 안녕하세요 css의 주석은 이거입니다. */
+pre{
+    font-size: 20px;
+    background: skyblue;
+    padding: 20px;
+    margin: 20px;
+    border-top : 3px dotted blue;
+    border-bottom : 3px dotted blue;
+    border-left : 10px solid red;
+    border-right : 10px solid red;
+  }
+  
+.box {
+	margin: 10px;
+	padding: 20px;
+	background: #efefef;
+	height: auto;
+	
+}
+
+.box button, .box input[type=button]{
+	background: blue;
+	color : white;
+	font-weight: bold;
+	padding: 5px;
+	border-radius: 30px;
+}
+
+.box div {
+	border: 2px dashed orange;
+	padding: 10px;
+	height: auto;
+	
+}
+

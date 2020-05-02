@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(()=>{
+
+
+            /* $('#btn').on('click', function(){
+                let res="";
+                $('input:checkbox[name="hobby"]:checked').each(function () {
+                    res += $(this).val() +"<br>";
+                })
+
+                $('#result1').html(res);
+
+            }) */
+            
+            $('#box1 button').on('click', function(){
+            	let res="";
+            	$.each($('#box1  :checkbox:checked'), function(a, b){ // a : index, b : value
+            		res += $(this).val() + "<br>";
+            	})
+            	$('#result1').html(res); //.text(res);
+            	
+            	
+            	$('input[type=checkbox]:checked').each(function(){
+            			
+            	})
+            })
+            
+
+        })// function
+
+    </script>
+</head>
+<body>
+<div id="box1" class="box">
+    <h2>취미 선택하기</h2>
+    체크된 체크박스를 선택자로 해서 작업의 대상이 되도록한ㄷ.
+    $(':checkbox:checked')
+    $('input[type=checkbox:chekced]')
+    
+    $.each($(대상), function(index, value){ })<br>
+    $(대상).each(function(index, value){})<br>
+    <form action="check.jsp" method="post">
+
+        취 미 :
+
+        <input type="checkbox" name="hobby" value="여행" checked>여행
+
+        <input type="checkbox" name="hobby" value="장기">장기
+
+        <input type="checkbox" name="hobby" value="바둑">바둑
+
+        <input type="checkbox" name="hobby" value="독서">독서
+
+        <input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+
+        <input id="btn" type="submit" value="전송"> form의 내용을 전송합니다.
+        <!-- form 안에 보내는 버튼이 있어야 전송이 된다. -->
+
+    </form>
+
+
+    <button id="btn1" type="button">실행</button>
+    <!-- <input type="submit" value="전송"> -->
+
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>

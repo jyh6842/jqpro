@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <link rel="stylesheet" href="../css/mystyle.css">
+	<style>
+		div{
+			margin: 10px;
+		}
+		#result{
+			border: 2px solid blue;
+			height : auto;
+			padding : 10px;
+			margin : 10px;
+		}
+	</style>
+    <script>
+    $(function () {
+		$('#rem').on('click', function(){
+			$('#d1 .pp').remove();
+		})
+		
+		$('#emp').on('click', function(){
+			$('#d2 .pp').empty();
+		})
+
+		$('.pp').on('click', function () {
+			$(this).css('font-size', '+=3px');
+		})
+
+		$('#erem').on('click', function () {
+			$('#p1').remove().appendTo('#result');
+		})
+		$('#det').on('click', function () {
+			$('#p2').detach().appendTo('#result');
+		})
+    })
+    </script>
+</head>
+<body>
+
+<div id = "box1" class="box">
+	<h2></h2>
+	<div id="d1">
+		<p class="pp">무궁화 꽃이 피었습니다.1</p>
+		<p class="pp">장미 꽃이 피었습니다.1</p>
+	</div>
+	
+	<div id="d2">
+		<p  class="pp">무궁화 꽃이 피었습니다.2</p>
+		<p  class="pp">장미 꽃이 피었습니다.2</p>
+	</div>
+
+	<div id="d3">
+		<p id="p1" class="pp">무궁화 꽃이 피었습니다.3</p>
+		<p id="p2" class="pp">장미 꽃이 피었습니다.3</p>
+	</div>
+	
+	
+	<button id ="rem" type="button">remove 실행</button>
+	<button id ="emp" type="button">empty 실행</button>
+
+	<button id ="erem" type="button">remove 실행(p1은 remove)</button>
+	<button id ="det" type="button">detach 실행(p2는 detach) 확인은 다른 곳에 옮겨야 확인 가능</button>
+	<div id = "result1"></div>
+
+	<br>
+	<br>
+	empty : 선택된 모든 요소의 자식요소를 지운다. 비우기 실행
+	remove와 detach 실행시 이벤트 핸들러 확인하기<br>
+	remove : 이벤트 핸들러가 실행되지 않는다. 선택된 모든 요소와 그의 자식요소를 지운다. 이벤트 핸들러도 같이 지워진다.<br>
+	detach : 이벤트 핸들러가 실행된다.<br>
+	<div id="result">
+
+
+	</div>
+</div>
+</body>
+</html>

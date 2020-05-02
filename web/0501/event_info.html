@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <style>
+        #d1 {
+            width: 300px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#d1').on('mousedown', function () {
+                let res = `대상 ${event.target}, ${event.target.tagName} <br>`;
+                res += `위치 ${event.pageX}, ${event.pageY} <br>`;
+                res += `스크린 위치 ${event.screenX}, ${event.screenY} <br>`;
+                res += `버튼 ${event.button} <br>`;
+                res += `ctrl ${event.ctrlKey} <br>`;
+
+                $('#result1').html(res);
+            })
+            $('button').on('mousedown', function () {
+                let res = `대상 ${event.target}, ${event.target.tagName} <br>`;
+                res += `위치 ${event.pageX}, ${event.pageY} <br>`;
+                res += `스크린 위치 ${event.screenX}, ${event.screenY} <br>`;
+                res += `버튼 ${event.button} <br>`;
+                res += `ctrl ${event.ctrlKey} <br>`;
+
+                $('#result1').html(res);
+            })
+
+            $(document).on('mousemove', function () {
+                let res = "X : " + event.pageX + ", ";
+                res += "Y : " + event.pageY;
+                $('#xyinfo').html(res);
+
+                // xy 좌표가 200, 200 이면 새로운 이미지 추가가
+                if(event.pageX == 200 && event.pageY == 200){
+                    let imgarr = ['aa.png', 'ccc.jpg', 'check.png', 'coffee1.jpg', 'Koala.jpg'];
+                    let ran = parseInt(Math.random() * imgarr.length);
+                    console.log(ran);
+                let xy = $('<img>', {
+                    'src' : '../images/' + imgarr[ran],
+                    'width' : '100px',
+                    'height' :  '100px'
+                })
+
+                    $(xy).insertBefore('#result1');
+
+
+
+                }
+
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="div1" class="box">
+    <h2></h2>
+    <div id="xyinfo"></div>
+    <div id="d1"></div>
+    <br>
+    <button id="btn1" type="button">실행</button>
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>

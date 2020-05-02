@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        $(function(){
+            $('#btn1').on('click',function(){
+                //전체 p를 선택
+                $('p').css('font-size','2.0em');
+            })
+
+            $('#btn2').on('click',function(){
+                //인덱스 1인 두번째 form에 p를 선택
+                $('p',document.forms[1]).css('color','hotpink');
+            })
+
+        })
+    </script>
+
+    <style>
+        p{
+            border : 1px solid white;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div class = "box">
+    <h2>컨텍스트</h2>
+    - $('선택자',컨텍스트) : 지정된 컨텍스트 범위 안에서 선택을 한다 <br>
+    - $('선택자',this) : 컨텍스트가 this인 경우  <br>
+    this는 현재 무언가를 실행하고 있는 객체변수 <br>
+    선택자를 기준으로 볼때는 this는 선택자의 부모다 <br>
+
+    <form>
+        <p>화이팅</p>
+    </form>
+
+
+    <form>
+        <p>화이팅</p>
+    </form>
+
+
+    <div id = "d1">
+        <p>화이팅</p>
+    </div>
+
+    실행버튼을 클릭하면 전체범위 내에서 p를 선택 <br>
+    실행from2를 클릭하면 두번째(인덱스 1) 폼에서 p를 선택 <br>
+    <button id = "btn1" type ="button">실행</button>
+    <button id = "btn2" type ="button">실행form2</button>
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>

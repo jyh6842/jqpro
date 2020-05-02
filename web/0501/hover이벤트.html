@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js" type="text/javascript"></script>
+
+    <script>
+        $(function () {
+            /*
+            $('#box1 p').on('mouseover', function(){
+                $(this).css('font-size', '20px')
+                       .css('background', 'pink')
+            })
+            $('#box1 p').on('mouseout', function(){
+                $(this).css('font-size', '10px')
+                    .css('background', 'white')
+            })
+            */
+            $('#box1 p').hover(function(){
+                $(this).css('font-size', '20px')
+                    .css('background', 'pink')
+            }, function () {
+                $(this).css('font-size', '10px')
+                    .css('background', 'white')
+
+            })
+
+            $('#box3 p').hover(function(){
+                $(this).addClass('phover');
+            }, function(){
+                $(this).removeClass('phover');
+            })
+
+            //$('#box4 p').click(function(){})
+            $('#box4 p').on('click', function(){
+                $(this).toggleClass('phover');
+            })
+
+            $('#box5 p').on('click', function(){
+                if($(this).hasClass('phover')){
+                    console.log($(this).attr('class'));
+                    $(this).removeClass('phover');
+                    $(this).addClass('abc');
+                }else{
+                    $(this).addClass('phover');
+                }
+            })
+
+            $('#box6 p').hover(function () {
+                $(this).css('background', 'lightgreen');
+            }, function () {
+                $(this).css('background', 'none');
+            })
+
+
+
+        })
+    </script>
+
+    <style>
+        #box2 p:hover{
+            font-size : 20px;
+            background: yellow;
+        }
+
+        .phover{
+            font-size:25px;
+            background: greenyellow;
+        }
+
+        .abc{
+            background : green;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id = "box1" class="box">
+    <h2>hover메소드</h2>
+    hover(function1(){}, function2(){})
+    function1() : mouserover <br>
+    function2() : mouseout <br>
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+</div>
+
+<div id = "box2" class="box">
+    <h2>hover스타일</h2>
+    #box2 p:hover
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+</div>
+
+<div id = "box3" class="box">
+    <h2>css클래스를 이용</h2>
+    class 파라미터를 style에다 미리 만들어 놓는다
+    addClass(class) : 스타일에 적응된 css가 추가되어 실행<br>
+    removeClass(class) : 스타일에 적응된 css를 삭제하여 실행<br>
+    hasClass(class) : 리턴 결과형 true, false<br>
+    toggleClass(class) : add/remove 번갈아가면서 실행 <br>
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+</div>
+
+<div id = "box4" class="box">
+    <h2>css클래스를 이용</h2>
+    click이벤트와 같은 하나의 동작으로 수행된다<br>
+    toggleClass(class) : add/remove 번갈아가면서 실행 <br>
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+</div>
+
+<div id = "box5" class="box">
+    hasClass(class) : 리턴 결과형 true, false<br>
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+</div>
+
+<div id="box6" class="box">
+    <h2>hover 이벤트 입니다.</h2>
+    <p>제주도는 비상입니다</p>
+    <p>놀러가신분들 재밌게 노세요</p>
+    <p>제주도는 의료진들을 생각하세요</p>
+    <p>안녕하세요</p>
+    <button>버튼 입니다.</button>
+</div>
+
+</body>
+</html>

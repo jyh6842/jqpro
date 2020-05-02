@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        //버튼을 클릭하면 새로운 <p>hello</p> 태그를 생성한다
+        //box에 추가한다
+        $(function(){
+            $('button#btn1').on('click', function(){
+                ptag = $('<p class="p1">hello</p>');
+
+                //$('#result1').append(ptag);
+                ptag.appendTo('.box');
+
+            })
+
+            $('#btn2').on('click', function(){
+                ptag = $('<p></p>', {
+                    'class' : 'p2',
+                    'text' : 'hello',
+                    'click' : function(){
+                        $(this).css('font-size', '+=3px');
+                    }
+                })
+
+                ptag.appendTo('.box');
+            })
+
+          $('#btn3').on('click', function () {
+
+                $('<img></img>', {
+                    'src' : '../images/풍차.jpg',
+                    'width' : '100px',
+                    'height' : '100px',
+                    'click' : function () {
+                        $(this).css('border', '3px solid blue');
+
+                    }
+                }).appendTo('#result2');
+
+          })
+
+        })
+
+
+    </script>
+</head>
+<body>
+
+<div class="box">
+    <h2>새로운 html요소 만들기</h2>
+    실행1 버튼을 클릭하면 새로운
+    <button id="btn1" type="button">실행</button>
+    <button id="btn2" type="button">글자를 클릭하면 커지는 글자를 만드는 버튼 실행</button>
+    <div id="result1"></div>
+</div>
+
+
+
+<div class="box">
+    <h2>새로운 이미지 만들기</h2>
+    실행1 버튼을 클릭하면 새로운
+    <button id="btn3" type="button">실행</button>
+    <div id="result2"></div>
+</div>
+</body>
+</html>

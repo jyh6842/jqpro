@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(function () {
+
+            $('img').attr('title', 'kkkk');
+
+            /*$('img').attr('title', function () {
+                let attrValue="";
+                // src속성값에서 이름부분 추출하기
+                attrValue += $(this).attr('src');
+                let start = attrValue.lastIndexOf("/") + 1;
+                let end = attrValue.lastIndexOf(".");
+
+                // 추출된 이름으로 title속성 부여하기
+                let vtitle = attrValue.substring(start, end);
+
+                // return vtitle 을 사용 하거나 $(this).attr('title', vtitle); 을 사용하거나 둘중에 하나를 사용하면 된다.
+                // return vtitle;
+                $(this).attr('title', vtitle);
+            })*/
+
+            /*$('button').on('click', function () {
+                // 이미지의 src속성값 가져오기 - attr
+                let attrValue = "";
+                $.each($('img'), function () {
+                    attrValue += $(this).attr('src');
+                    // src속성값에서 이름부분 추출하기
+                    let start = attrValue.lastIndexOf("/") + 1;
+                    let end = attrValue.lastIndexOf(".");
+
+                    // 추출된 이름으로 title속성 부여하기
+                    let vtitle = attrValue.substring(start, end);
+                    $(this).attr('title', vtitle);
+
+                })
+                console.log(attrValue);
+
+            })*/
+
+
+            $('img').on('click', function () {
+                $(this).removeAttr('title'); // 이미지를 클릭 했을 때 title 이라는 속성을 제거한다.
+            })
+        })
+    </script>
+</head>
+<body>
+<div id = "div1" class="box">
+    <h2>button을 클릭 했을 때 img에 title 속성값 주기</h2>
+    <h3>attr</h3>
+    버튼 클릭시 이미지의 title 타이틀속성을 설정<br>
+    타이틀은 이미지의 이름으로 한다.<br>
+    <img src="../images/aa.png" >
+    <img src="../images/뱅쇼.jpg">
+    <img src="../images/ccc.jpg">
+    <img src="../images/cloud03.jpg">
+    <img src="../images/coffee1.jpg">
+
+
+
+
+    <button id="btn1" type="button">실행</button>
+    <div id="result1"></div>
+
+</div>
+
+</body>
+</html>

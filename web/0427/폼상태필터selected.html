@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.5.0.min.js"></script>
+<script>
+	$(function() {
+		/* 		$('select').on('change', function(){ }) */
+
+		 res = "";
+		$('#spring').on('change', function() {
+			$.each($('option:selected', this), function(i, v) {
+				// option[0], option[1] => [v 또는 this 로 해라]
+				//res += $(this).val() + "<br>";
+				res += `${ $(this).val() }<br>`; //${} 템플릿 리터럴, $() jQuery
+				//$(v).val()
+				//v.value
+				//this.value
+			})
+			$('#result1').html(res);
+		})
+		
+		
+	})
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h2></h2>
+		button 대신에<br> select에서 값이 선택시 값이 변하는 이벤트<br>
+
+		<form>
+
+			봄소식 : <select name="spring" id="spring" multiple size="6">
+
+				<option>개나리</option>
+
+				<option selected>진달래</option>
+
+				<option>민들레</option>
+
+				<option selected>벚꽃</option>
+
+				<option>목련</option>
+
+				<option>철쭉</option>
+
+			</select>
+
+		</form>
+
+
+		<div id="result1"></div>
+	</div>
+</body>
+</html>
