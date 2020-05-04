@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <style>
+        img {
+            position: relative;
+            width: 100px;
+            height: 100px;
+
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#box1 button').on('click', function () {
+                /*$('#box1 img').animate({left: '+=100px', height: '+=20px'}, 1000)
+                    .delay(2000)
+                    .animate({width: '+=20px'}, 500);*/
+
+                $('#box1 img').animate({left : '+=100px'}, 1000)
+                .animate({opacity : '-0.5'}, 500)
+                .animate({left : '-=100px'}, 500)
+                .animate({opacity: '+=0.5'}, 500)
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="box1" class="box">
+    <h2></h2>
+    <img src="../images/파댕이_우왕.gif"><br>
+    <img src="../images/파댕이_마자마자.gif"><br>
+    <img src="../images/파댕이_물어보신분.gif"><br>
+
+
+    <button id="btn1" type="button">실행</button>
+
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+
+    <script>
+        $(function() {
+            //bind형식
+            $('.bb').on('click', function() {
+                b1 = $('<button></button>',{
+                    'class' : 'bb',
+                    'type' : 'button',
+                    'text' : '실행'
+                })
+
+                $('#result1').append(b1);
+            })
+
+            //delegate형식
+            //$(document).on('click', '.bb2', function() {})
+            $('.box2').on('click', '.bb2', function() {
+                b2 = $('<button></button>',{
+                    'class' : 'bb2',
+                    'type' : 'button',
+                    'text' : '실행'
+                })
+
+                $('#result2').append(b2);
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+<div id="box1" class="box">
+    <h2>bind</h2>
+    $('선택자').on(type, fn)<br>
+    실행버튼을 클릭하면 실행버튼과 같은 형식의 새로운 버튼을 생성하여 추가한다.<br>
+    실행 이전에 미리 만들어져 있는 요소에 이벤트 핸들러를 등록<br><br>
+    <button class="bb" type="button">실행</button>
+    <button class="bb" type="button">실행</button>
+    <div id="result1"></div>
+</div>
+
+<div id="box2" class="box box2">
+    <h2>delegate</h2>
+    delegate(선택자, 이벤트, fn)<br>
+    $(document).on(이벤트, 선택자, fn)<br>
+    $(document)는 선택자의 부모 요소로 대체 할 수 있다.<br>
+    실행버튼을 클릭하면 실행버튼과 같은 형식의 새로운 버튼을 생성하여 추가한다.<br>
+    실행 이전에 미리 만들어져 있는 요소에 이벤트 핸들러를 등록<br><br>
+    <button class="bb2" type="button">실행</button>
+
+    <div ID="result2" class="box2"></div>
+</div>
+</body>
+</html>

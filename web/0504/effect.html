@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>effect</title>
+    <script src="../js/jquery-3.5.0.js"></script>
+    <link rel="stylesheet" href="../css/mystyle.css">
+
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $('#show').on('click',function(){
+                $('img').show(1000, 'swing', function(){});
+                alert("곰이다~~곰이 나타났어요~");
+            })
+
+            $('#hide').on('click',function(){
+                $('img').hide(500);
+            })
+
+            $('#tog').on('click',function(){
+                $('img').toggle("slow");
+            })
+
+            $('#sup').on('click', function(){
+                $('img').slideUp("slow");
+            })
+
+            $('#slidedown').on('click', function(){
+                $('img').slideDown("slow");
+            })
+
+            $('#slidetoggle').on('click', function(){
+                $('img').slideToggle("slow");
+            })
+
+            $('#fadein').on('click', function(){
+                $('img').fadeIn("slow");
+            })
+
+            $('#fadeout').on('click', function(){
+                $('img').fadeOut("slow");
+            })
+
+            $('#fadeout').on('click', function(){
+                $('img').fadeOut("slow");
+            })
+
+            $('#fadetoggle').on('click', function(){
+                $('img').fadeToggle("slow");
+            })
+
+            $('#fadeto').on('click', function(){
+                $('img').fadeTo("slow", 1);
+            })
+        })
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+    <h2></h2>
+    <button id="show" type="button">show</button>
+    <button id="hide" type="button">hide</button>
+    <button id="toggle" type="button">toggle</button>
+    <button id="slideup" type="button">slideup</button>
+    <button id="slidedown" type="button">slidedown</button>
+    <button id="slidetoggle" type="button">slidetoggle</button>
+    <button id="fadein" type="button">fadein</button>
+    <button id="fadeout" type="button">fadeout</button>
+    <button id="fadetoggle" type="button">fadetoggle</button>
+    <button id="fadeto" type="button">fadeto</button>
+    <br><br>
+    <img src="../images/파댕이_마자마자.gif" alt="파댕이">
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>
