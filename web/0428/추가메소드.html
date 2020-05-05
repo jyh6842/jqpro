@@ -1,168 +1,167 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="../js/jquery-3.5.0.min.js"></script>
-<link href="../css/mystyle.css" rel="stylesheet">
-<style>
-img {
-	width: 100px;
-	height: 100px;
-}
-</style>
-<script>
-	$(function() {
-		// 배열 선언
-		imgarr = [ "Penguins.jpg", "spongebob.png", "Tulips.jpg", "대나무숲.jpg",
-				"벚꽃.jpg" ];
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <link href="../css/mystyle.css" rel="stylesheet">
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        $(function () {
+            // 배열 선언
+            imgarr = ["Penguins.jpg", "spongebob.png", "Tulips.jpg", "대나무숲.jpg",
+                "벚꽃.jpg"];
 
-		/* $('#app').on('click', function() {
-		    //imgarr 배열의 이미지를 선택하여 result1에 뒤(마지막)로 추가
-		    rnd = Math.floor(Math.random() * imgarr.length);
+            /* $('#app').on('click', function() {
+                //imgarr 배열의 이미지를 선택하여 result1에 뒤(마지막)로 추가
+                rnd = Math.floor(Math.random() * imgarr.length);
 
-		    // 이미지 태그 생성
-		    $("<img>", {
-		        'src' : "../images/" + imgarr[rnd],
-		        'width' : '100px',
-		        'height' : '100px'
-		    }).appendTo('#result1');
+                // 이미지 태그 생성
+                $("<img>", {
+                    'src' : "../images/" + imgarr[rnd],
+                    'width' : '100px',
+                    'height' : '100px'
+                }).appendTo('#result1');
 
-		}) */
+            }) */
 
-		$('#app').on('click', function() {
-			rnd = Math.floor(Math.random() * imgarr.length);
-			$('#result1').append($("<img>", {
-				'src' : "../images/" + imgarr[rnd],
-				'width' : '100px',
-				'height' : '100px'
-			})
+            $('#app').on('click', function () {
+                rnd = Math.floor(Math.random() * imgarr.length);
+                $('#result1').append($("<img>", {
+                        'src': "../images/" + imgarr[rnd],
+                        'width': '100px',
+                        'height': '100px'
+                    })
+                )
 
-			)
+            })
 
-		})
+            /* $('#pre').on('click', function() {
+                //imgarr 배열의 이미지를 선택하여 result2에 앞(처음)으로 추가
+                rnd = Math.floor(Math.random() * imgarr.length);
 
-		/* $('#pre').on('click', function() {
-		    //imgarr 배열의 이미지를 선택하여 result2에 앞(처음)으로 추가
-		    rnd = Math.floor(Math.random() * imgarr.length);
+                // 이미지 태그 생성
+                $("<img>", {
+                    'src' : "../images/" + imgarr[rnd],
+                    'width' : '100px',
+                    'height' : '100px'
+                }).prependTo('#result2');
 
-		    // 이미지 태그 생성
-		    $("<img>", {
-		        'src' : "../images/" + imgarr[rnd],
-		        'width' : '100px',
-		        'height' : '100px'
-		    }).prependTo('#result2');
+            }) */
+            $('#pre').on('click', function () {
+                rnd = Math.floor(Math.random() * imgarr.length);
+                vimg = $("<img>", {
+                    'src': "../images/" + imgarr[rnd],
+                    'width': '100px',
+                    'height': '100px'
+                })
 
-		}) */
-		$('#pre').on('click', function() {
-			rnd = Math.floor(Math.random() * imgarr.length);
-			vimg = $("<img>", {
-				'src' : "../images/" + imgarr[rnd],
-				'width' : '100px',
-				'height' : '100px'
-			})
+                $('#result2').prepend(vimg);
 
-			$('#result2').prepend(vimg);
+            })
 
-		})
+            $('#aft').on('click', function () {
+                rnd = Math.floor(Math.random() * imgarr.length);
+                vimg = $("<img>", {
+                    'src': "../images/" + imgarr[rnd],
+                    'width': '100px',
+                    'height': '100px'
+                })
 
-		$('#aft').on('click', function() {
-			rnd = Math.floor(Math.random() * imgarr.length);
-			vimg = $("<img>", {
-				'src' : "../images/" + imgarr[rnd],
-				'width' : '100px',
-				'height' : '100px'
-			})
+                //$('#result3').after(vimg);
+                $(vimg).insertAfter('#result3');
+            })
 
-			//$('#result3').after(vimg);
-			$(vimg).insertAfter('#result3');
-		})
+            $('#bef').on('click', function () {
+                rnd = Math.floor(Math.random() * imgarr.length);
+                vimg = $("<img>", {
+                    'src': "../images/" + imgarr[rnd],
+                    'width': '100px',
+                    'height': '100px'
+                })
 
-		$('#bef').on('click', function() {
-			rnd = Math.floor(Math.random() * imgarr.length);
-			vimg = $("<img>", {
-				'src' : "../images/" + imgarr[rnd],
-				'width' : '100px',
-				'height' : '100px'
-			})
+                //$('#result4').before(vimg);
+                $(vimg).insertBefore('#result3');
 
-			//$('#result4').before(vimg);
-			$(vimg).insertBefore('#result3');
+            })
+            let setIntervalID = "";
+            $('#box3 button#start').on('click', function () {
+                setIntervalID = setInterval(function () {
+                    $('#result5 img:first').appendTo('#result5');
+                }, 1000)
+                // start 버튼 감추기
+                $(this).css('display', 'none');
 
-		})
-		let setIntervalID="";
-		$('#box3 button#start').on('click', function() {
-			setIntervalID = setInterval(function() {
-				$('#result5 img:first').appendTo('#result5');
-			}, 1000)
-			// start 버튼 감추기
-			$(this).css('display', 'none');
+            })
 
-		})
+            //stop 버튼 클릭하면 - 이벤트 핸들러
+            // -> setInterveral 실행 종료
+            // -> start 버튼 나타내기
+            $('#stop').on('click', function () {
+                $('#start').css('display', 'inline');
+                clearInterval(setIntervalID)
 
-		//stop 버튼 클릭하면 - 이벤트 핸들러
-		// -> setInterveral 실행 종료
-		// -> start 버튼 나타내기
-		$('#stop').on('click', function () {
-			$('#start').css('display', 'inline');
-			clearInterval(setIntervalID)
+            })
 
-		})
+            // p태그 이미지 추가하기
+            $('#box4 p').on('click', function () {
+                let pp = $(this);
+                $('<img>', {
+                    'src': '../images/' + pp.text() + '.jpg',
+                    'width': '100px',
+                    'height': '100px'
+                }).appendTo(pp)
 
-		// p태그 이미지 추가하기
-		$('#box4 p').on('click', function () {
-			let pp = $(this);
-			$('<img>', {
-				'src' : '../images/' + pp.text() + '.jpg',
-				'width' : '100px',
-				'height' : '100px'
-			}).appendTo(pp)
-
-		})
+            })
 
 
-	})
-</script>
+        })
+    </script>
 </head>
 <body>
 
-	<div id="box1" class="box">
-		<h2>append/prepand</h2>
-		<button id="app" type="button">append실행</button>
-		<button id="pre" type="button">prepend실행</button>
-		<div id="result1"></div>
-		<div id="result2"></div>
-	</div>
+<div id="box1" class="box">
+    <h2>append/prepand</h2>
+    <button id="app" type="button">append실행</button>
+    <button id="pre" type="button">prepend실행</button>
+    <div id="result1"></div>
+    <div id="result2"></div>
+</div>
 
-	<div id="box2" class="box">
-		<h2>after/before</h2>
-		<button id="aft" type="button">after실행</button>
-		<button id="bef" type="button">before실행</button>
-		<br>
-		<div id="result3"></div>
-		<div id="result4"></div>
-	</div>
+<div id="box2" class="box">
+    <h2>after/before</h2>
+    <button id="aft" type="button">after실행</button>
+    <button id="bef" type="button">before실행</button>
+    <br>
+    <div id="result3"></div>
+    <div id="result4"></div>
+</div>
 
-	<div id="box3" class="box">
-		<h2>append/appendTo</h2>
-		<button id="start" type="button">append/appendTo 실행</button>
-		<button id="stop" type="button">append/appendTo 종료</button>
-		<br> <br>
-		<div id="result5">
-			<img src="../images/Penguins.jpg"> <img
-				src="../images/spongebob.png"> <img src="../images/셔틀콕.jpg">
-		<img src="../images/대나무숲.jpg"> <img src="../images/뱅쇼.jpg">
-	</div>
-	</div>
+<div id="box3" class="box">
+    <h2>append/appendTo</h2>
+    <button id="start" type="button">append/appendTo 실행</button>
+    <button id="stop" type="button">append/appendTo 종료</button>
+    <br> <br>
+    <div id="result5">
+        <img src="../images/Penguins.jpg"> <img
+            src="../images/spongebob.png"> <img src="../images/셔틀콕.jpg">
+        <img src="../images/대나무숲.jpg"> <img src="../images/뱅쇼.jpg">
+    </div>
+</div>
 
-	<div id="box4" class="box">
-		<div>
-			<h2>이미지 추가</h2>
-			<p title="Tulips">튜울립</p>
-			<p title="Chrysanthemum">국화</p>
-			<p title="Koala">코알라</p>
-			<p title="Hydrangeas">수국</p>
-		</div>
-	</div>
+<div id="box4" class="box">
+    <div>
+        <h2>이미지 추가</h2>
+        <p title="Tulips">튜울립</p>
+        <p title="Chrysanthemum">국화</p>
+        <p title="Koala">코알라</p>
+        <p title="Hydrangeas">수국</p>
+    </div>
+</div>
 </body>
 </html>

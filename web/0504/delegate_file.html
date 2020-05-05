@@ -9,6 +9,7 @@
         $(function () {
             let count = 0;
             $('.box').on('click', '.add', function () {
+                if(count < 5){
                 count++;
                 let file = "";
                 file += `<span id = ${count}>`;
@@ -19,7 +20,7 @@
 
                 //	첨부파일이 최대 5개까지
                 //	5개 이상이면 더이상 추가에 대한 이벤트는 발생되지 않는다.
-
+                }
             })
 
             $('.box').on('click', '.del', function () {

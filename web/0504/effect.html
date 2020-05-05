@@ -11,6 +11,10 @@
             width: 100px;
             height: 100px;
         }
+
+        p{
+            display: none;
+        }
     </style>
 
     <script>
@@ -59,6 +63,11 @@
             $('#fadeto').on('click', function(){
                 $('img').fadeTo("slow", 1);
             })
+
+            $('a').on('click', function() {
+                event.preventDefault();
+                $('p').toggle("slow");
+            })
         })
 
     </script>
@@ -80,6 +89,10 @@
     <button id="fadeto" type="button">fadeto</button>
     <br><br>
     <img src="../images/파댕이_마자마자.gif" alt="파댕이">
+
+    <a href="">자세히보기</a>
+    <p>임진왜란(壬辰倭亂)은 1592년 5월 23일[31]부터 1598년 12월 16일[32]까지 7년간 조선과 명나라 대 일본 사이에서 일어난 전쟁이다. 전쟁의 주 무대였던 조선에 긍정적이든 부정적이든 엄청난 영향을 끼쳤으며 더 나아가 명나라와 일본 등 16세기~17세기 동아시아의 역사를 뒤흔든 국제전이었다.[33]</p>
+
     <div id="result1"></div>
 </div>
 
