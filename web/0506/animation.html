@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-3.5.0.min.js"></script>
+<script>
+	$(function() {
+ 		$('#btn1').click(function() {
+			/*$('#box1 img').animate({left : '+=100px'}, 1000)
+							  .delay(2000)
+							  .animate({width : '+=10px'}, 500); */
+
+			/* $('#box1 img').animate({left : '+=100px'}, 500)
+							  .animate({opacity : '-=0.5'}, 500)
+							  .animate({left : '-=100px'}, 500)
+							  .animate({opacity : '+=0.5'}, 500) */
+						  
+			a = setInterval(function(){
+				$('#box1 img').animate({left : '+=100px'}, 500)
+							  .animate({opacity : '-=0.5'}, 500)
+							  .animate({left : '-=100px'}, 500)
+							  .animate({opacity : '+=0.5'}, 500)
+			}, 1000)
+		})
+		
+		$('#btn2').click(function() {
+			clearInterval(a);
+		})
+		
+		$('#btn3').click(function(){
+			$('#dd').animate({left : '+=100px'}, 500)
+					.queue(function(){
+						$(this).css('background', 'pink')
+						$(this).dequeue()
+					})
+					.animate({left : '-=100px'}, 500)
+					.queue(function(){
+						$(this).css('background', 'white')
+						$(this).dequeue()
+					})
+		})
+		
+		$('#btn5').click(function(){
+			setInterval(function(){
+			$('p').animate({left : '+=100px', 'font-size' : '+=5px'}, 500)
+				  .queue(function(){
+						// 랜덤  
+						cr = Math.floor(Math.random() * 256);
+						cg = Math.floor(Math.random() * 256);
+						cb = Math.floor(Math.random() * 256);
+
+						cr = cr.toString(16);
+						cg = cg.toString(16);
+						cb = cb.toString(16);
+				 $(this).css('color', '#' + cr + cg + cb)
+				        .dequeue()
+				})	
+				  
+				  .delay(500)
+				  .animate({left : '-=100px', 'font-size' : '-=5px'}, 500)
+				  .queue(function(){
+					  $(this).css('color', '#' + cr + cg + cb)
+				    	     .dequeue()
+				  })
+			}, 1000)
+		})
+	})
+</script>
+<style type="text/css">
+img {
+	position: relative; 
+	width : 200px;
+	height: 200px;
+	width: 200px;
+}
+
+#dd {
+	position : relative;
+	width: 60px;
+	height: 60px;
+	background: white;
+}
+
+p {
+	position : relative;
+}
+</style>
+</head>
+<body>
+
+	<div id="box1" class="box">
+		<h2></h2>
+		<img src="../images/파댕이_우왕.gif"><br>
+		<img src="../images/파댕이_마자마자.gif"><br>
+		<img src="../images/파댕이_물어보신분.gif"><br>
+
+		<br><br>
+		
+		<button id="btn1" type="button">실행</button>
+		<button id="btn2" type="button">종료</button>
+	</div>
+	
+	<div id="box2" class="box">
+		<h2></h2>
+		<div id="dd"></div>
+		<br>
+		<button id="btn3" type="button">실행</button>
+	</div>
+	
+	<div id="box3" class="box">
+		<h2></h2>
+		실행 클릭하면 p태그가 오른쪽으로 이동, 글자크기를 크게 바꿔서 이동 <br>
+		이동한 위치에서 글자색을 랜덤으로 변경 <br>
+		0.5초 정지 후 원래 위치와 크기를 작게 변경 <br>
+		이동 후 글자색을 랜덤으로 변경<br>
+		위 내용을 1초마다 한 번씩 계속적으로 수행<br>
+		<p>우왕~~~~~~ 우 왕~~~~~ 우우우왕~~~~~~</p>
+		<br>
+		<button id="btn5" type="button">실행</button>
+		<button id="btn6" type="button">종료</button>
+	</div>
+</body>
+</html>
