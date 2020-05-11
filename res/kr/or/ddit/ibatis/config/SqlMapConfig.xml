@@ -14,7 +14,8 @@
    
    <!--2.  VO 클래스에 대한 별칭선언-->
    <!-- <typeAlias alias="memberVO" type="경로.클래스이름"/>  -->
-   <typeAlias alias="memVO" type="kr.or.ddit.member.vo.MemberVO"/>
+   <typeAlias alias="memVO" type="kr.or.ddit.member.kr.or.ddit.member.vo.MemberVO"/>
+   
    
    
    
@@ -30,6 +31,7 @@
    <!-- 3. sql실행문이 선언된 mapper파일(member.xml) 연결 -->
    <!-- <sqlMap resource="경로/파일이름"/> -->
    <sqlMap resource="kr/or/ddit/ibatis/mapper/member.xml"/>
+   <sqlMap resource="kr/or/ddit/ibatis/mapper/lprod.xml"/>
 </sqlMapConfig>
 
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-3.5.0.min.js"></script>
+<script>
+	$(function() {
+		xhr = new XMLHttpRequest();
+		$('button').on('click', function() {
+			// 전송
+			xhr.open("get", "Lprod.jsp", true)
+			xhr.send();
+
+			// 응답
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText); // 받은 값을 JSON 형태로 바꾼다.
+
+					code = `<table border = '1' >`;
+					code += `<tr><td>LPROD_ID</td>`;
+					code += `<td>LPROD_GU</td>`;
+					code += `<td>LPROD_NM</td></tr>`;
+					 /* $.each(res, function(i, v) {  */
+						$.each(res, (i,v)=>{ 
+							
+						
+						/* code += `${i+1} 번째 데이터<br>`; */
+						code += `<tr><td>${res[i].id}</td>`;
+						code += `<td>${v.gu}</td>`;
+						code += `<td>${v.nm}</td></tr>`;
+
+					})// 반복
+					code += "</table>";
+
+					$('#result1').html(code);
+				}// if
+
+			}//응답
+		})
+
+	})
+</script>
+<style type="text/css">
+	td {
+	width : 200px;
+	height : 40px;
+	text-align : center;
+	font-size : 15px;
+	padding : 5px;
+	}
+</style>
+
+</head>
+<body>
+	<div id="div1" class="box">
+		<h2></h2>
+
+
+
+		<button id="btn1" type="button">실행</button>
+
+		<div id="result1"></div>
+	</div>
+
+</body>
+</html>
