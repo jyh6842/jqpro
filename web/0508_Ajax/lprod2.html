@@ -7,8 +7,36 @@
     <script src="../js/jquery-3.5.0.min.js"></script>
 <script>
     $(function () {
-        
-    })
+        $('button').on('click', function(){
+        	
+        	$.ajax({
+        		url : '/jqpro/LProdServlet',
+        		type : 'get',
+        		/* data : // 요청시 전송데이터, 이거 0 번에서 받음 controller 에서*/
+        		success : function(res){// res 는 성공한 데이터만 온다.
+        			//res : json object 배열
+        			// parse?
+        			code = `<table border = '1'>`;
+                    code += `<tr><td>LPROD_ID</td>`;
+                    code += `<td>LPROD_GU</td>`;
+                    code += `<td>LPROD_NM</td></tr>`;
+                    
+                    $.each(res,(i, v)=>{
+                       code += `<tr><td>${v.id}</td>`;
+                       code += `<td>${v.gu}</td>`;
+                       code += `<td>${v.nm}</td></tr>`;
+                    })
+                    
+                    code += `</table>`;
+                     $('#result1').html(code);
+                },// success
+        		error : function(xhr){
+        			alert("상태 : " + xhr.status); // 200 뜨면 성공인데 왜 200이 뜰까? 200 뜨는 이유는 jsp의 json 형식이 잘못 된 것이다.
+        		},
+        		dataType : 'json' // success 의 응답 데이터 타입
+        	})// ajax
+        })// click
+    })// $(function())
 </script>
 </head>
 <body>

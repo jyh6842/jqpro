@@ -1,0 +1,51 @@
+package kr.or.ddit.prod.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import kr.or.ddit.prod.dao.IProdDao;
+import kr.or.ddit.prod.dao.ProdDaoImpl;
+import kr.or.ddit.prod.vo.ProdVO;
+
+public class ProdServiceImpl implements IProdService {
+
+	private IProdDao dao;
+
+	private static IProdService service;
+
+	private ProdServiceImpl() {
+		dao = ProdDaoImpl.getInstance();
+	}
+
+	public static IProdService getInstance() {
+		if (service == null) {
+			service = new ProdServiceImpl();
+		}
+		return service;
+	}
+
+	@Override
+	public List<ProdVO> selectProd(String lgu) {
+		List<ProdVO> list = null;
+		try {
+			list = dao.selectProd(lgu);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public ProdVO ProdDetail(String id) {
+		ProdVO vo = null;
+		try {
+			vo = dao.ProdDetail(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+
+}
