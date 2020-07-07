@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../css/mystyle.css" type = "text/css" rel="stylesheet">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>//23
+    $(function(){
+        $('button').on('click',function(){
+            //각상태 값을 가져온다.
+            chk = $('#checkTest').prop('checked');
+            opt = $('#selTest option').eq(0).prop('selected');
+            txt = $('#txtTest').prop('readonly');
+            dis = $('#runBtn').prop('disabled');
+
+            res = `chk = ${chk} <br>`;
+            res += `opt = ${opt} <br>`;
+            res += `txt = ${txt} <br>`;
+            res += `dis = ${dis} <br>`;
+
+            $('#result1').html(res);
+
+            //각상태 값을 반대로 변경
+            $('#checkTest').prop('checked',!chk);
+        })
+
+        $('#checkTest').on('click', function() {
+            if($('#checkTest').prop('checked')) {
+                ($('input[name=chkNum]').prop('checked', true));
+            } else {
+                ($('input[name=chkNum]').prop('checked', false));
+            }
+        })
+
+    })
+
+    </script>
+</head>
+<body>
+
+<div class="box">
+    <h2></h2>
+    <form>
+        체크박스(라디오버튼) :
+        <input type="checkbox" id="checkTest"> 전체선택
+        <input type="checkbox" name='chkNum'>1
+        <input type="checkbox" name='chkNum'>2
+        <input type="checkbox" name='chkNum'>3
+        <input type="checkbox" name='chkNum'>4
+        <input type="checkbox" name='chkNum'>5 <br>
+        리스트박스(select객체) :
+        <select id="selTest">
+            <option value="1">하나</option>
+            <option value="2">둘</option>
+            <option value="3" selected >셋</option>
+            <option value="4">넷</option>
+        </select><br><br>
+
+        text객체   (readonly) :
+        <input  type="text" value="가나다" id="txtTest"><br><br>
+
+        button객체(disabled) :
+        <input  type="button" value="확인" id="runBtn" onclick="alert('hello')">
+    </form>
+
+    <button id="btn1" type="button">실행</button>
+    <div id = "result1"></div>
+</div>
+</body>
+</html>

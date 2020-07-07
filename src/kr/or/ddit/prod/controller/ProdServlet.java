@@ -16,7 +16,7 @@ import kr.or.ddit.prod.vo.ProdVO;
 /**
  * Servlet implementation class ProdServlet
  */
-@WebServlet("/Prod.do")
+@WebServlet(name = "Prod.do", urlPatterns = "/Prod.do")
 public class ProdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

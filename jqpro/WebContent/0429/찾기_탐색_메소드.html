@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href = "../css/mystyle.css" rel = "stylesheet" type = "text/css">
+    <script src = "../js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(function(){
+            vcss = $('#box1 li.start').next().css('border');
+            vcolor = $('#box1 li.start').next().css('color');
+            console.log("border= "+vcss + " color1 = " + vcolor);
+
+            $('#next').on('click', function(){
+                $("#box1 li.start").next().css({"color": "red", "border": "2px solid red"});
+
+                vcss = $('#box1 li.start').next().css('border');
+                vcolor = $('#box1 li.start').next().css('color');
+                console.log("border= "+vcss + " color2 = " + vcolor);
+
+            });
+
+            $('#nextAll').on('click', function(){
+                $('#box1 li.start').nextAll().css({"color": "blue", "border": "2px solid blue"});
+
+                vcss = $('#box1 li.start').nextAll().css('border');
+                vcolor = $('#box1 li.start').nextAll().css('color');
+                console.log("border= "+vcss + " color3 = " + vcolor);
+
+            });
+
+            $('#nextUntil').on('click', function(){
+                $('#box1 li.start').nextUntil($('#box1 li.end')).css({"color": "green", "border": "2px solid green"});
+
+                vcss = $('#box1 li.start').nextUntil().css('border');
+                vcolor = $('#box1 li.start').nextUntil().css('color');
+                console.log("border= "+vcss + " color4 = " + vcolor);
+
+            });
+
+            //prev()/preveAll()/prevUntil(selector)
+            $('#prev').on('click', function(){
+                $('#box2 li.start').prev().css({"color": "blue", "border": "2px solid blue"});
+
+                vcss = $('#box2 li.start').prev().css('border');
+                vcolor = $('#box2 li.start').prev().css('color');
+                console.log("border= "+vcss + " color1 = " + vcolor);
+            });
+
+            $('#prevAll').on('click', function(){
+                $('#box2 li.start').prevAll().css({"color": "blue", "border": "2px solid blue"});
+
+                vcss = $('#box2 li.start').prevAll().css('border');
+                vcolor = $('#box2 li.start').prevAll().css('color');
+                console.log("border= "+vcss + " color2 = " + vcolor);
+            });
+
+            $('#prevUntil').on('click', function(){
+                $('#box2 li.start').prevUntil($('#box2 li.end')).css({"color": "green", "border": "2px solid green"});
+
+                vcss = $('#box2 li.start').prevUntil().css('border');
+                vcolor = $('#box2 li.start').prevUntil().css('color');
+                console.log("border= "+vcss + " color3 = " + vcolor);
+            });
+
+
+
+            //parent()/parents()/parents(selector)/parentsUntil(selector)
+            $('#parent').on('click', function(){
+                $('#box3 li').parent().css({"color": "blue", "border": "2px solid blue"});
+
+                vcss = $('#box3 li').parent().css('border');
+                vcolor = $('#box3 li').parent().css('color');
+                console.log("border= "+vcss + " color1 = " + vcolor);
+            });
+
+            $('#parents').on('click', function(){
+                $('#box3 li').parents().css({"color": "blue", "border": "2px solid blue"});
+
+                vcss = $('#box3 li').parents().css('border');
+                vcolor = $('#box3 li').parents().css('color');
+                console.log("border= "+vcss + " color2 = " + vcolor);
+            });
+
+            $('#parents2').on('click', function(){
+                $('#box3 li').parents('#box3').css({"color": "red", "border": "2px solid red"});
+
+                vcss = $('#box3 li').parents($('ul')).css('border');
+                vcolor = $('#box3 li').parents($('#box3')).css('color');
+                console.log("border= "+vcss + " color3 = " + vcolor);
+            });
+
+            $('#parentsUntil').on('click', function(){
+                $("#box3 li.start").prevUntil("li.stop").css({"color": "green", "border": "2px solid green"});
+
+                vcss = $("#box3 li.start").prevUntil("li.stop").css('border');
+                vcolor = $("#box3 li.start").prevUntil("li.stop").css('color');
+                console.log("border= "+vcss + " color4 = " + vcolor);
+            });
+
+            //siblings()/siblings(selector)
+            $('#siblings').on('click', function(){
+                $('#box4 li.start').siblings().css('border','2px dotted blue');
+            });
+
+            $('#siblings2').on('click', function(){
+                $('#box4 li').siblings('.start').css('border','4px solid red');
+            });
+
+            $("#contents").click(function(){
+                //$("#box5 ul").contents().css({"color":"red", "border":"2px solid red" })
+                $("#box5 ul").contents().filter("li").last().css({"color":"red", "border":"2px solid red" })
+
+                //후손은 검색이 안됌
+                //$("#box5 ul").contents("span").css({"color":"red", "border":"2px solid red" })
+            })
+            $("#children").click(function(){
+                $("#box5 ul").children().filter("li").first().css({"color":"red", "border":"2px solid blue" })
+                //$("#box5 ul").children().css({"color":"red", "border":"2px solid blue" })
+            })
+            $("#find").click(function(){
+
+                //후손 검색
+                $("#box5 ul").find("span").css({"color":"red", "border":"2px solid blue" })
+            })
+        });
+    </script>
+    <style>
+        .box{
+            background:white;
+        }
+        .siblings *{
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+        .siblings button{
+            display : inline;
+        }
+    </style>
+</head>
+<body>
+
+<div id = "box1" class = "box siblings">
+    <h2>next()/nextAll()/nextUntil(selector)</h2>
+    <ul>ul (parent)
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+        <li class="start">li (sibling with class name "start")</li>
+        <li>li (the next sibling of li with class name "start")</li>
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+        <li class = "end">li (sibling)</li>
+    </ul>
+    <button id = "next" type = "button">next실행</button>
+    <button id = "nextAll" type = "button">nextAll실행</button>
+    <button id = "nextUntil" type = "button">nextUntil실행</button>
+</div>
+<hr><br>
+
+<div id = "box2" class = "box siblings">
+    <h2>prev()/preveAll()/prevUntil(selector)</h2>
+    <ul>ul (parent)
+        <li class="stop">li (sibling with class name "stop")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li class="start">li (sibling with class name "start")</li>
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+    </ul>
+    <button id = "prev" type = "button">prev실행</button>
+    <button id = "prevAll" type = "button">prevAll실행</button>
+    <button id = "prevUntil" type = "button">prevUntil실행</button>
+</div>
+<hr><br>
+<div id = "box3" class = "box siblings">
+    <h2>parent()/parents()/parents(selector)/parentsUntil(selector)</h2>
+    <ul>ul (parent)
+        <li class="stop">li (sibling with class name "stop")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li>li (the previous sibling of li with class name "start")</li>
+        <li class="start">li (sibling with class name "start")</li>
+        <li>li (sibling)</li>
+        <li>li (sibling)</li>
+        <li>li (direct parent)
+            <span>span</span>
+        </li>
+    </ul>
+    <button id = "parent" type = "button">parent실행</button>
+    <button id = "parents" type = "button">parents실행</button>
+    <button id = "parents2" type = "button">parents(selector)실행</button>
+    <button id = "parentsUntil" type = "button">parentsUntil(selector)실행</button>
+</div>
+<hr><br>
+<div id = "box4" class = "box siblings">
+    <h2>siblings()/siblings(selector)</h2>
+    <ul>ul (parent)
+        <li>li (the previous sibling of "start")</li>
+        <li>li (the previous sibling of "start")</li>
+        <li class="start">li (sibling)</li>
+        <li>li (the next sibling of "start")</li>
+        <li>li (the next sibling of "start")</li>
+    </ul>
+    <button id = "siblings" type = "button">siblings실행</button>
+    <button id = "siblings2" type = "button">siblings(selector)실행</button>
+</div>
+<hr><br>
+<div id = "box5" class = "box siblings">
+    <h2>자식/후손</h2>
+    contents, children : 자식을 선택 div > p<br>
+    find : 자식을 포함한 후손 div p
+    <ul>ul (direct parent)
+        <li>li child
+            <span>sapn grandchild</span>
+        </li>
+        <li>li child
+            <span>sapn grandchild</span>
+        </li>
+    </ul>
+    <button id = "contents" type = "button">contents</button>
+    <button id = "children" type = "button">children</button>
+    <button id = "find" type = "button">find</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+
+
+    <script>
+        $(function(){
+            $("img").hover(function(){
+                $(this).addClass("add");
+            },function(){
+                $(this).removeClass("add");
+            })
+
+            $(".guess_box").click(function(){
+                $("p").remove();
+                
+                const ran = parseInt(Math.random()*6)+5;
+
+                let a = `<p>할인율 : ${ran} %</p>`;
+				
+                $(this).append(a);
+                $(this).off('click');
+                
+            })
+        })
+
+    </script>
+
+
+    <style>
+        img{
+            height : 150px;
+            width : 150px;
+        }
+        .add{
+            border : 3px solid blue;
+        }
+        
+        
+        #main{
+            width: 1000px;
+            height: 300px;
+            border : 3px solid yellow;
+        }
+        
+        #main div{
+            width: 200px;
+            height: 200px;
+            border : 3px solid red;
+            display: inline-block;
+        }
+        
+        p {
+        	float : left;
+        }
+
+    </style>
+    
+
+
+
+</head>
+<body>
+
+<div class = "box">
+    <h2></h2>
+    <div id="header">
+        <h2> Jump for Joy Sale </h2>
+    </div>
+    <div id="main">
+
+        <div class="guess_box"><img src="../images/aa.png" /></div>
+        <div class="guess_box"><img src="../images/Anne-Marie(앤마리)-2002.jpg" /></div>
+        <div class="guess_box"><img src="../images/ccc.jpg" /></div>
+        <div class="guess_box"><img src="../images/check.png" /></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

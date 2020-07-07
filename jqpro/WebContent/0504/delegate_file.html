@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(function () {
+            let count = 1;
+            $('.box').on('click', '.add', function () {
+                if(count < 5){
+                count++;
+                let file = "";
+                file += `<span id = ${count}>`;
+                file += `<br>파일 : <input type = "file"> `;
+                file += `<button id="btn1" class='add' type="button">추가</button>`;
+                file += `<button class='del ${count}'>삭제 </button></span>`;
+                $('.box').append(file);
+
+                //	첨부파일이 최대 5개까지
+                //	5개 이상이면 더이상 추가에 대한 이벤트는 발생되지 않는다.
+                }
+            })
+
+            $('.box').on('click', '.del', function () {
+                /*let vclass = $(this).attr('class'); // del 1
+                let vc = vclass.split(" "); //vc[0] = "del", vc [1] = "1"
+                $(`span#${vc[1]}`).remove(); // $('#1').remove();*/
+
+                $(this).parent().remove();
+
+            })
+        })
+    </script>
+</head>
+<body>
+<div id = "div1" class="box">
+    <h2></h2>
+    이름 : <input type = "text"><br>
+    파일 : <input type = "file">
+
+    <button id="btn1" class='add' type="button">추가</button>
+
+</div>
+
+</body>
+</html>

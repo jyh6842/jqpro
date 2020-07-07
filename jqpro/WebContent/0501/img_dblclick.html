@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <style>
+        #div2 > div {
+            width : 500px;
+            height: 500px;
+        }
+
+        img{
+            width: 100px;
+            height: 100px;
+
+        }
+
+        #btn2 {
+            display: none;
+        }
+
+    </style>
+    <script src="../js/jquery-3.5.0.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#tarea').on('keyup', function () {
+                let len = $(this).val().length;
+                let nam = 140 - len;
+                if(nam <= 0){
+                    $(this).prop('disabled', true);
+                }
+                $('p span').text(nam);
+
+            })
+
+
+
+
+
+            // $('#div2 img').dblclick().css('display', 'none');
+            $('#div2 img').on('dblclick', function () {
+                $(this).css('display', 'none');
+
+                if($('#div2 img:visible').length < 1){
+                    $('#btn2').css('display', 'block');
+                }
+
+            })
+
+            $('#btn2').click(function () {
+                    $('img').show();
+                    $(this).hide();
+            })
+
+
+        })
+    </script>
+</head>
+<body>
+<div id = "div1" class="box">
+    <h2>keyup 이벤트</h2>
+    <div>
+        <h2>하고 싶은 말을 하세요(140자 이내)</h2>
+        <textarea id="tarea"></textarea>
+        <p>남은 글자 : <span>140</span></p>
+
+    </div>
+
+
+
+    <button id="btn1" type="button">실행</button>
+
+    <div id="result1"></div>
+</div>
+
+<div id="div2" class="box">
+    <h2>이미지 더블 클릭</h2>
+    <div>
+        <img src="../images/aa.png" alt="">
+        <img src="../images/Anne-Marie(앤마리)-2002.jpg" alt="">
+        <img src="../images/ccc.jpg" alt="">
+
+    </div>
+    <button id="btn2" type="button" >보이기</button>
+</div>
+
+</body>
+</html>

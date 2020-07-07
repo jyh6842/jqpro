@@ -27,11 +27,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JAX-WS-Apache Axis" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.8" level="application_server_libraries" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9.0.8" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/C_Lib/ibatis/ibatis-2.3.4.726.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../C_Lib/ibatis/ibatis-2.3.4.726.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -40,11 +40,30 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/C_Lib/ibatis/ojdbc6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../C_Lib/ibatis/ojdbc6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../InstallFolder/library/ibatis-2.3.4.726.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../InstallFolder/library/ojdbc6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.81" level="application_server_libraries" />
   </component>
 </module>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+<script>
+    $(function () {
+        $('button').on('click', function(){
+        	
+        	$.ajax({
+        		url : '/jqpro/LProdServlet',
+        		type : 'get',
+        		/* data : // 요청시 전송데이터, 이거 0 번에서 받음 controller 에서*/
+        		success : function(res){// res 는 성공한 데이터만 온다.
+        			//res : json object 배열
+        			// parse?
+        			code = `<table border = '1'>`;
+                    code += `<tr><td>LPROD_ID</td>`;
+                    code += `<td>LPROD_GU</td>`;
+                    code += `<td>LPROD_NM</td></tr>`;
+                    
+                    $.each(res,(i, v)=>{
+                       code += `<tr><td>${v.id}</td>`;
+                       code += `<td>${v.gu}</td>`;
+                       code += `<td>${v.nm}</td></tr>`;
+                    })
+                    
+                    code += `</table>`;
+                     $('#result1').html(code);
+                },// success
+        		error : function(xhr){
+        			alert("상태 : " + xhr.status); // 200 뜨면 성공인데 왜 200이 뜰까? 200 뜨는 이유는 jsp의 json 형식이 잘못 된 것이다.
+        		},
+        		dataType : 'json' // success 의 응답 데이터 타입
+        	})// ajax
+        })// click
+    })// $(function())
+</script>
+</head>
+<body>
+<div id = "box1" class="box">
+    <h2>jQuery Ajax - model2 방식 이용</h2>
+    model - VO, service, dao (DB와 관련된 것)
+    view : 화면 출력  - 디자인 요소
+    controller - 자바(servlet) 처리 - 비지니스 로직 구현 -> 구현후 생성된 결과 -> view 페이지로 보낸다.
+    controller 에서 생성된 결과를 view 페이지에서 사용하는 방법
+    forward : controller 와 view 페이지가  request, resposnse 를 공유한다. 공유하기 때문에 controller에서 생성된 결과를 request에 저장한다.
+    	controller에서도 쓸수 잇고 view에서도 사용할 수 있다.
+    redirect : 요청했던 클라이언트로 응답이 이루어진 후에 다시 재요청하는 방식
+    	클라이언트로 응답함과 동시에 request에 저장한 결과는 사라진다.
+    	contoller 와 view 페이지가 request, response를 공유하지 않는다.
+    
+
+    <button id="btn1" type="button">실행</button>
+
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+        $(function () {
+			$('button').on('click', function(){
+				
+				$.ajax({
+					url : '/jqpro/LProdServlet',
+					/* type : 'get', */
+					/* data : 값 */
+					success : function(res) {
+						code = ``;
+						$.each(res, function(i, v){
+							// code += `<option value='${res[i].gu}'>${res[i].nm}</option>`;
+							// $('#lprod').html(code);
+							code += $('<option></option>', {
+								'value' : res[i].gu,
+								'text' : res[i].nm
+							}).appendTo('#lprod'); // code += $('<option></option>', {
+						})// each
+					},// success
+					error : function(xhr){
+						   alert("상태:"+xhr.status);
+		            },
+		            dataType : 'json'
+				})// ajax
+				
+			})
+			
+			// lprod 제품분류를 선택하면 option의 value인 lprod
+			$('#lprod').change(function(){
+		         lvalue = $(this).val();
+		         console.log(lvalue);
+		         
+		         $.ajax({
+		        	url : '/jqpro/Prod.do',// 요청
+		        	data : {'prod_gu' : lvalue}, // 요청 전송하는 데이터
+		        	type : 'get', // 요청
+		        	dataType : 'json', // 응답
+		        	error : function(xhr){ // 응답
+		        		alert("상태:"+xhr.status);
+		        	},
+		        	success : function(res){ // 응답
+		        		code = ``;
+		        	$.each(res, function(i,v){
+		        		code +=`<option value = '${res[i].id}'>${res[i].name}</option>`;
+		        	})
+		        	$('#prod').html(code);
+		        	
+		        	}
+		         })
+		         
+		         
+		      })
+		      
+		      
+		      // prod 상품을 선택하면 option value 의 prod_id 값을 가져오기
+		      // prod_id 값을 조건으로 해서 상세정보 가져오기
+				$('#prod').on('change', function(){
+						pidvalue = $(this).val();
+						console.log(pidvalue);
+						$.ajax({
+							url : '/jqpro/Prod.do',
+							data : {'prod_id' : pidvalue}, // 전송하는 데이터
+							type : 'post', // 
+							dataType : 'json', // 응답
+				        	error : function(xhr){ // 응답
+				        		alert("상태:"+xhr.status);
+				        	},
+				        	success : function(res){
+				        		code = `<table>`;
+				        		//$.each(res, function(i,v){
+				        			code += `<tr><td>항목</td><td>내용</td></tr>`
+				        			code += `<tr><td>prod_id</td><td>${res.id}</td></tr>`
+				        			code += `<tr><td>prod_name</td><td>${res.name}</td></tr>`
+				        			code += `<tr><td>prod_lgu</td><td>${res.lgu}</td></tr>`
+				        			code += `<tr><td>prod_buyer</td><td>${res.buyer}</td></tr>`
+				        			code += `<tr><td>prod_cost</td><td>${res.cost}</td></tr>`
+				        			code += `<tr><td>prod_price</td><td>${res.price}</td></tr>`
+				        			code += `<tr><td>prod_sale</td><td>${res.sale}</td></tr>`
+				        			code += `<tr><td>prod_outline</td><td>${res.outline}</td></tr>`
+				        			code += `<tr><td>prod_size</td><td>${res.size}</td></tr>`
+				        			code += `<tr><td>prod_color</td><td>${res.color}</td></tr>`
+				        			code += `<tr><td>prod_unit</td><td>${res.unit}</td></tr>`
+				        		//})
+				        		code += `</table>`;
+				        		$('#result1').html(code);
+				        		
+				        	}
+						
+						})
+						
+							
+				})		      
+				
+
+			
+			
+        })
+    </script>
+</head>
+<body>
+<div id = "box1" class="box">
+    <h2>lprod/prod</h2>
+    두개의 select option<br>
+    lprod - lprod_gu, lprod_nm<br>
+    prod - prod_lgu 와 lprod_gu가 일치하는 조건<br>
+            prod_id, prod_name<br>
+    prod - detail - prod_id 가 일치하는 조건 으로<br>
+        모든 항목을 조회한다.<br>
+    <br>
+    한개의 table
+
+
+
+    <button id="btn1" type="button">실행</button>
+    <br>
+    <select id = "lprod">
+<!--        <option value="P101">컴퓨터제품</option>
+        <option value="P102">전자제품</option>-->
+    </select>
+
+    <select id = "prod">
+        <!--<option value="P10100001">모니터삼성전자15인치</option>-->
+    </select>
+
+    <div id="result1"></div>
+</div>
+
+</body>
+</html>
+

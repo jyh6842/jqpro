@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+    <style></style>
+    <script src="../js/jquery-3.5.0.min.js"></script>
+    <script>
+    $(function () {
+        $('ul li:first-child').css('background', 'yellow');
+        $('ul li:eq(5)').css('background', 'red');
+        $('ul li:last-child').css('background', 'yellow');
+
+        $('#div2 tr:even').css('background', 'pink');
+
+        $('#div2 tr:first').css('background', 'black').css('color', 'white');
+
+        $('#div3 tr:even td').css('background', 'lightgray');
+        $('#div3 tr:first-child td').css('background', 'black').css('color', 'white');
+
+    })
+    </script>
+</head>
+<body>
+<div class="box">
+    <h2>기본 필터</h2>
+    $('li:first, li:last');
+    $('li:eq(5)');
+    $('li:lt(4)');
+    less than : ~ 보다 작은
+
+    <ul>
+
+        <li> one</li>
+
+        <li> two</li>
+
+        <li> three</li>
+
+        <li> four</li>
+
+        <li> five</li>
+
+        <li> six</li>
+
+        <li> seven</li>
+
+        <li>eight</li>
+
+        <li>nine</li>
+
+    </ul>
+
+
+    <button id="btn1" type="button">실행</button>
+
+    <div id="result1"></div>
+</div>
+
+<div id="div2" class="box">
+    <h2>기본 필터</h2>
+    $('tr:even')<br>
+    $('tr:odd')<br>
+    <br>
+
+    <table>
+        <tr>
+            <td>이름 </td>
+            <td>나이 </td>
+        </tr>
+        <tr>
+            <td>ONE</td>
+            <td>678</td>
+        </tr>
+
+        <tr>
+            <td>TWO</td>
+            <td>678</td>
+        </tr>
+
+        <tr>
+            <td>THREE</td>
+            <td>678</td>
+        </tr>
+
+        <tr>
+            <td>FOUR</td>
+            <td>678</td>
+        </tr>
+
+        <tr>
+            <td>FIVE</td>
+            <td>678</td>
+        </tr>
+
+        <tr>
+            <td>SIX</td>
+            <td>678</td>
+        </tr>
+        <tr>
+            <td>SEVEN</td>
+            <td>678</td>
+        </tr>
+        <tr>
+            <td>EIGHT</td>
+            <td>678</td>
+        </tr>
+        <tr>
+            <td>NINE</td>
+            <td>678</td>
+        </tr>
+        <tr>
+            <td>TEN</td>
+            <td>678</td>
+        </tr>
+    </table>
+
+    <button id="btn" type="button">실행</button>
+
+    <div id="result2"></div>
+</div>
+
+<div id="div3" class="box">
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>주소</td>
+        </tr>
+
+        <tr>
+            <td>홍길동</td>
+            <td>서울</td>
+        </tr>
+
+        <tr>
+            <td>진달래</td>
+            <td>서울</td>
+        </tr>
+
+        <tr>
+            <td>개나리</td>
+            <td>부산</td>
+        </tr>
+
+        <tr>
+            <td>무궁화</td>
+            <td>대구</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

@@ -10,7 +10,7 @@
             $('button').on('click', function(){
 
                 $.ajax({
-                    url : '/jqpro/LProdServlet',
+                    url : '/LProdServlet', // 이클립스에서는 이렇게 /jqpro/LProdServlet
                     /* type : 'get', */
                     /* data : 값 */
                     success : function(res) {
@@ -38,7 +38,7 @@
                 console.log(lvalue);
 
                 $.ajax({
-                    url : '/jqpro/Prod.do',// 요청
+                    url : '/Prod.do',// 요청 // /jqpro/Prod.do 이클립스에서는 이렇게
                     data : {'prod_gu' : lvalue}, // 요청 전송하는 데이터
                     type : 'get', // 요청
                     dataType : 'json', // 응답
@@ -76,7 +76,7 @@
                         code = `<table>`;
                         $.each(res, function(i,v){
                             code += `<tr><td>항목</td><td>내용</td></tr>`
-                            code += `<tr><td>prod_id</td><td>${}</td></tr>`
+                            code += `<tr><td>prod_id</td><td></td></tr>`
                             code += `<tr><td>prod_name</td><td>내용</td></tr>`
                             code += `<tr><td>prod_lgu</td><td>내용</td></tr>`
                             code += `<tr><td>prod_buyer</td><td>내용</td></tr>`

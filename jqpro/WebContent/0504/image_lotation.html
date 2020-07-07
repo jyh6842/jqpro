@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link href="../css/mystyle.css" rel="stylesheet" type = "text/css">
+    <script src="../js/jquery-3.5.0.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#start").click(function(){
+                a = setInterval(function(){
+                    $('img').first().appendTo('#box1');
+                    $("#start").css("display","none");
+                },1000)
+            })
+
+            $("#stop").click(function(){
+                clearInterval(a);
+                const ran = parseInt(Math.random() * $("img").length);
+                $("img").eq(ran).css("border","5px solid red");
+                $("#start").css("display","inline")
+            })
+        })
+
+    </script>
+
+
+    <style>
+        img{
+            height : 100px;
+            width : 100px;
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+<div class = "box">
+    <h2></h2>
+
+    <div class="box" id ="box1">
+        <img src="../images/aa.png" />
+        <img src="../images/Anne-Marie(앤마리)-2002.jpg" />
+        <img src="../images/ccc.jpg" />
+        <img src="../images/check.png" />
+    </div>
+    <p>시작눌러용</p>
+    <button id="start" type="button">시작 </button><button id="stop" type="button">종료</button>
+
+</div>
+
+
+</body>
+</html>

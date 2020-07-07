@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../css/mystyle.css" rel="stylesheet" type = "text/css">
+<script src="../js/jquery-3.5.0.min.js"></script>
+
+   <script>
+   $(function(){
+      $('button').on('click',function(){
+         $.ajax({
+            url : '/jqpro/NameList.do',
+            type : 'get',
+            success : (res)=>{
+               code = ``;
+               $.each(res, function(i,v){
+                  code += `<p id='${res[i].id}'>${res[i].name}</p>`
+               })
+               
+               $('#names').html(code);
+               
+            },
+            error : (xhr)=>{
+               alert("상태:"+xhr.status);
+            },
+            dataType : 'json'
+         })
+      })
+      
+      $('#names').on('click', 'p',function(){
+    	  // id 값을 가져 온다.
+    	  idvalue = $(this).attr('id');
+    	  
+    	  // 서버로 요청(전송 jsp 또는 servlet 페이지가 있어야 한다.)
+    	  $.ajax({
+    		  url : '/jqpro/Detail.do',
+    		  type : 'post',
+    		  data : {"id" : idvalue}, /* idvalue 을 받는다. request.getParamewter() */
+    		  success : function(res){
+    			  
+    			  code = `<table>`;
+    			  
+    			  code += `<tr><td>BUYER_ID</td>`;
+    			  code += `<td>${res.id}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_NAME</td>`;
+    			  code += `<td>${res.name}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_LGU</td>`;
+    			  code += `<td>${res.lgu}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_COMTEL</td>`;
+    			  code += `<td>${res.comtel}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_BANK</td>`;
+    			  code += `<td>${res.bank}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_BANKNO</td>`;
+    			  code += `<td>${res.bankno}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_BANKNAME</td>`;
+    			  code += `<td>${res.bankname}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_MAIL</td>`;
+    			  code += `<td>${res.mail}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_ZIP</td>`;
+    			  code += `<td>${res.zip}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_ADD1</td>`;
+    			  code += `<td>${res.add1}</td></tr>`;
+    			  
+    			  code += `<tr><td>BUYER_ADD2</td>`;
+    			  code += `<td>${res.add2}</td></tr>`;
+    			  
+    			  
+    			  code += `</table>`;
+    			  
+    			  $('#detail').html(code);
+    			  
+    			  
+    		  },
+    		  error : function(xhr){
+    			  alert("상태 : " + xhr.status)
+    		  },
+    		  dataType : 'json'
+    		  
+    	  })// ajax
+      })// function
+   })
+   </script>
+
+   <style>
+   table{
+      border-collapse: collapse;
+   }
+   
+   td{
+      width : 200px;
+      height : 40px;
+      paddint : 5px;
+      text-align : center;
+   }
+   
+   .tr1{
+      background : lightblue;
+   }
+   
+   p:hover {
+   	background : lime;
+   }
+   
+   #detail {
+   	
+   }
+   </style>
+
+</head>
+<body>
+
+
+<div class = "box">
+   <h2>buyer</h2>
+   <table border = "1">
+      <tr class = "tr1">
+         <td>거래처이름</td>
+         <td>거래처 상세정보</td>
+      </tr>
+      
+      <tr>
+         <td id = "names">
+         </td>
+         <td id = "detail">
+         </td>
+      </tr>
+      
+   </table>
+   <button type ="button">실행</button>
+   <div id="result1"></div>
+</div>
+
+</body>
+</html>
+

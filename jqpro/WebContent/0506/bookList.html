@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../css/mystyle.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-3.5.0.min.js"></script>
+<script>
+	$(function(){
+		$('a').click(function(){
+			event.preventDefault();
+			
+			// 클릭 시 href 속성값을 가져오기
+			vhref = $(this).attr('href');
+			idx = vhref.lastIndexOf("/") + 1;
+			vimg = vhref.substring(idx);
+			
+			$('img').fadeOut(1000, function(){
+				$('img').attr('src', '../images/' + vimg);
+				$('img').show(500);
+			})
+		})
+	})
+</script>
+<style type="text/css">
+img {
+	width: 150px;
+	height: 180px;
+}
+</style>
+</head>
+<body>
+
+	<div class="box">
+		<h2></h2>
+		<ul>
+			<li><a href="../images/파댕이_마자마자.gif">jQuery교재</a></li>
+			<li><a href="../images/파댕이_물어보신분.gif">JSP교재</a></li>
+			<li><a href="../images/파댕이_우왕.gif">UML교재</a></li>
+			<li><a href="../images/파댕이_메롱.gif">Ajax교재</a></li>
+			<li><a href="../images/파댕이_무엇.gif">JAVA교재</a></li>
+		</ul>
+		
+		<div id="result1">
+			<img src="../images/noImage.png" alt="">
+		</div>
+	</div>
+</body>
+</html>

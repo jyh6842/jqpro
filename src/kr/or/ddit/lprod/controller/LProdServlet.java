@@ -18,7 +18,7 @@ import kr.or.ddit.lprod.vo.LprodVO;
 /**
  * Servlet implementation class LProdServelet
  */
-@WebServlet("/LProdServlet")
+@WebServlet(name = "LProdServlet", urlPatterns = "/LProdServlet")
 public class LProdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
